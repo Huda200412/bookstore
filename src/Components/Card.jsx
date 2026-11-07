@@ -1,4 +1,8 @@
-function Card({ book }) {
+import Button from "./Button";
+
+import Button from "./Button";
+
+function Card({ book, onViewDetails, onAddToCart }) {
 
   return (
 
@@ -28,6 +32,22 @@ function Card({ book }) {
         <h6 className="text-primary">
           ${book.price}
         </h6>
+
+        <div className="d-flex gap-2">
+
+          <Button
+            text="View Details"
+            className="btn-primary"
+            onClick={() => onViewDetails(book)}
+          />
+
+          <Button
+            text="Add to Cart"
+            className="btn-success"
+            onClick={() => onAddToCart(book)}
+          />
+
+        </div>
 
       </div>
 
