@@ -1,16 +1,87 @@
-# React + Vite
+# BookStore Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+BookStore is a responsive book-shopping website built using React. It allows users to browse books, view book details, add new books, and manage their shopping cart.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Main Features
+- Display books using reusable Cards.
+- View book images, titles, authors, descriptions, and prices.
+- Add new books using a form.
+- View book details.
+- Add books to the shopping cart.
+- Remove books from the cart.
+- Calculate the total price.
+- Navigate between pages.
 
-## React Compiler
+## Technologies Used
+- React
+- JavaScript
+- React Router DOM
+- Bootstrap
+- CSS
+- Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Pages
+- Home
+- About
+- Services
+- Contact
+- Add Book
+- Cart
+- Book Details
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install Node.js.
+2. Download or clone the project.
+3. Open the project folder in Visual Studio Code.
+4. Open the terminal.
+5. Install the dependencies:
+
+```bash
+npm install
+```
+
+6. Start the development server:
+
+```bash
+npm run dev
+```
+
+7. Open the local URL displayed in the terminal.
+
+## Screenshots of the UI
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Book Details
+![Book Details](screenshots/details.png)
+
+### Add Book
+![Add Book](screenshots/addbook.png)
+
+### Shopping Cart
+![Shopping Cart](screenshots/cart.png)
+
+## Project Structure
+
+```text
+src/
+├── Components/
+│   ├── Card.jsx
+│   └── NavBar.jsx
+├── Data/
+│   └── Books.js
+├── Pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Services.jsx
+│   ├── Contact.jsx
+│   ├── AddBook.jsx
+│   ├── Cart.jsx
+│   └── BookDetails.jsx
+├── App.jsx
+└── main.jsx
+```
