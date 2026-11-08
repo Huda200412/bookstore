@@ -1,60 +1,44 @@
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
-import Button from "./Button";
+function Card({ image, title, description, price }) {
 
-function Card({ book, onViewDetails, onAddToCart }) {
+  const navigate = useNavigate();
 
   return (
-
-    <div className="card h-100 shadow-sm">
+    <div className="card h-100">
 
       <img
-        src={book.image}
+        src={image}
         className="card-img-top"
-        alt={book.title}
-        style={{ height: "250px", objectFit: "cover" }}
+        alt={title}
       />
 
       <div className="card-body">
 
-        <h5 className="card-title">
-          {book.title}
-        </h5>
+        <h5 className="card-title">{title}</h5>
 
-        <p className="card-text">
-          {book.author}
-        </p>
+        <p className="card-text">{description}</p>
 
-        <p className="text-muted">
-          {book.category}
-        </p>
+        <h6>${price}</h6>
 
-        <h6 className="text-primary">
-          ${book.price}
-        </h6>
+        <Button
+          text="View Details"
+          className="btn-primary"
+          onClick={() => navigate("/book-details", {
+            state: { image, title, description, price }
+          })}
+        />
 
-        <div className="d-flex gap-2">
-
-          <Button
-            text="View Details"
-            className="btn-primary"
-            onClick={() => onViewDetails(book)}
-          />
-
-          <Button
-            text="Add to Cart"
-            className="btn-success"
-            onClick={() => onAddToCart(book)}
-          />
-
-        </div>
+        <Button
+          text="Add to Cart"
+          className="btn-success"
+        />
 
       </div>
 
     </div>
-
   );
-
 }
 
 export default Card;
