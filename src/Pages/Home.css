@@ -1,0 +1,21 @@
+.book-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+.book-image-wrapper {
+  padding: 15px;
+  background-color: #f8f9fa;
+}
+
+.book-image {
+  height: 230px;
+  width: 100%;
+  object-fit: contain;
+}

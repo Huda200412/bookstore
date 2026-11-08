@@ -11,6 +11,7 @@ import Contact from "./Pages/Contact";
 import Services from "./Pages/Services";
 import Cart from "./Pages/Cart";
 import BookDetails from "./Pages/BookDetails";
+import Footer from "./Components/Footer";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/book-details" element={<BookDetails />} />
 
       </Routes>
+      <Footer />
 
     </BrowserRouter>
   );

@@ -1,9 +1,7 @@
-
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function AddBook() {
-
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,23 +11,21 @@ function AddBook() {
   const [formData, setFormData] = useState({
     image: "",
     title: "",
+    author: "",
     description: "",
-    price: ""
+    price: "",
   });
 
   const handleChange = (event) => {
-
     const { name, value } = event.target;
 
     setFormData((currentData) => ({
       ...currentData,
-      [name]: value
+      [name]: value,
     }));
-
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
     const updatedBooks = [...books, formData];
@@ -37,26 +33,24 @@ function AddBook() {
     navigate("/", {
       state: {
         books: updatedBooks,
-        cart
-      }
+        cart,
+      },
     });
 
     setFormData({
       image: "",
       title: "",
+      author: "",
       description: "",
-      price: ""
+      price: "",
     });
-
   };
 
   return (
     <div className="container mt-5">
-
       <h2>Add New Book</h2>
 
       <form onSubmit={handleSubmit}>
-
         <div className="mb-3">
           <label className="form-label">Book Image</label>
 
@@ -79,6 +73,19 @@ function AddBook() {
             name="title"
             value={formData.title}
             onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Book Author</label>
+
+          <input
+            type="text"
+            className="form-control"
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
+            placeholder="Enter author name"
             required
           />
         </div>
@@ -111,9 +118,7 @@ function AddBook() {
         <button type="submit" className="btn btn-primary">
           Add Book
         </button>
-
       </form>
-
     </div>
   );
 }

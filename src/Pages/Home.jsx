@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import booksData from "../data/Data";
+import Books from "../Data/Books";
 import Card from "../Components/Card";
-
+import "./Home.css";
 function Home() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,7 +11,7 @@ function Home() {
     if (location.state && location.state.books) {
       return location.state.books;
     } else {
-      return booksData;
+      return Books;
     }
   });
 
@@ -27,39 +25,35 @@ function Home() {
 
   return (
     <div className="container">
-
-      <div className="row">
-
+      <div className="row g-4">
         {books.map((item, index) => {
           return (
-            <div
-              className="col-sm-12 col-md-6 col-lg-4"
-              key={index}
-            >
+           <div className="col-12 col-sm-6 col-lg-4 mb-2" key={index}>
               <Card
                 image={item.image}
                 title={item.title}
                 description={item.description}
                 price={item.price}
-                cart={cart}
-                setCart={setCart}
+                author={item.author}
+                item={item}
                 books={books}
+                cart={cart}
               />
             </div>
           );
         })}
-
       </div>
 
       <button
         className="btn btn-primary mt-3"
-        onClick={() => navigate("/addbook", {
-          state: { books, cart }
-        })}
+        onClick={() =>
+          navigate("/addbook", {
+            state: { books, cart },
+          })
+        }
       >
         Add New Book
       </button>
-
     </div>
   );
 }
