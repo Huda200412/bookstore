@@ -1,10 +1,37 @@
 
-
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Cart() {
 
-  const [cart, setCart] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  let initialCart = [];
+
+  if (location.state && location.state.cart) {
+    initialCart = location.state.cart;
+  }
+
+  const books = location.state?.books || [];
+
+  const [cart, setCart] = useState(initialCart);
+
+  const handleDelete = (indexToDelete) => {
+
+    setCart((currentCart) =>
+      currentCart.filter((item, index) =>
+        index !== indexToDelete
+      )
+    );
+
+  };
+
+  let total = 0;
+
+  cart.map((item, index) => {
+    total = total + Number(item.price);
+  });
 
   let content;
 
@@ -36,6 +63,13 @@ function Cart() {
 
                   <p>${item.price}</p>
 
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Delete
+                  </button>
+
                 </div>
 
               </div>
@@ -57,9 +91,24 @@ function Cart() {
 
       {content}
 
+      <h4 className="mt-4">
+        Total Price: ${total}
+      </h4>
+
+      <button
+        className="btn btn-secondary mt-3"
+        onClick={() => navigate("/", {
+          state: {
+            books,
+            cart
+          }
+        })}
+      >
+        Back to Home
+      </button>
+
     </div>
   );
-
 }
 
 export default Cart;

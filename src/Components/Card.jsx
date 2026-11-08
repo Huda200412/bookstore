@@ -1,9 +1,25 @@
+
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
-function Card({ image, title, description, price }) {
+function Card({
+  image,
+  title,
+  description,
+  price,
+  cart,
+  setCart,
+  books
+}) {
 
   const navigate = useNavigate();
+
+  const book = {
+    image,
+    title,
+    description,
+    price
+  };
 
   return (
     <div className="card h-100">
@@ -25,14 +41,26 @@ function Card({ image, title, description, price }) {
         <Button
           text="View Details"
           className="btn-primary"
-          onClick={() => navigate("/book-details", {
-            state: { image, title, description, price }
-          })}
+          onClick={() =>
+            navigate("/book-details", {
+              state: { book, books, cart }
+            })
+          }
         />
 
         <Button
           text="Add to Cart"
           className="btn-success"
+          onClick={() => {
+            const updatedCart = [...cart, book];
+
+            navigate("/cart", {
+              state: {
+                cart: updatedCart,
+                books
+              }
+            });
+          }}
         />
 
       </div>

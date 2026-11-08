@@ -1,13 +1,19 @@
-import { useLocation } from "react-router-dom";
+
+import { useLocation, useNavigate } from "react-router-dom";
 
 function BookDetails() {
 
   const location = useLocation();
-  const book = location.state;
+  const navigate = useNavigate();
+
+  const book = location.state?.book;
+  const books = location.state?.books || [];
+  const cart = location.state?.cart || [];
 
   let content;
 
   if (book) {
+
     content = (
       <div className="card">
 
@@ -15,6 +21,7 @@ function BookDetails() {
           src={book.image}
           className="card-img-top"
           alt={book.title}
+          style={{ height: "300px", objectFit: "contain" }}
         />
 
         <div className="card-body">
@@ -29,16 +36,28 @@ function BookDetails() {
 
       </div>
     );
+
   } else {
+
     content = <p>No Book Selected</p>;
+
   }
 
   return (
     <div className="container mt-5">
 
-      <h2 className="mb-4">Book Details</h2>
+      <h2>Book Details</h2>
 
       {content}
+
+      <button
+        className="btn btn-secondary mt-3"
+        onClick={() => navigate("/", {
+          state: { books, cart }
+        })}
+      >
+        Back to Home
+      </button>
 
     </div>
   );

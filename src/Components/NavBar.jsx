@@ -1,6 +1,8 @@
+
+
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function NavBar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -11,38 +13,62 @@ function Navbar() {
           BookStore
         </Link>
 
-        <div className="navbar-nav ms-auto">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <Link className="nav-link" to="/">
-            Home
-          </Link>
+        <div className="collapse navbar-collapse" id="navbarContent">
 
-          <Link className="nav-link" to="/about">
-            About
-          </Link>
+          <ul className="navbar-nav ms-auto">
 
-          <Link className="nav-link" to="/services">
-            Services
-          </Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
 
-          <Link className="nav-link" to="/contact">
-            Contact
-          </Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
 
-          <Link className="nav-link" to="/add-book">
-            Add Book
-          </Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/services">
+                Services
+              </Link>
+            </li>
 
-          <Link className="nav-link" to="/cart">
-            Cart
-          </Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">
+                Contact
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/addbook">
+                Add Book
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/cart">
+                Cart
+              </Link>
+            </li>
+
+          </ul>
 
         </div>
-
       </div>
-
     </nav>
   );
+
 }
 
-export default Navbar;
+export default NavBar;
